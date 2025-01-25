@@ -9,6 +9,8 @@ import Loader from "../layout/loader/Loader.js"
 
 
 import {useAlert} from "react-alert";
+import Header from '../layout/Header/Header.js';
+import Footer from '../layout/footer/Footer.js';
 
 
 
@@ -30,6 +32,7 @@ const Home = () => {
     }, [dispatch, error, alert]);
     return (
         <Fragment>
+            <Header />
             {loading ? (
                 <Loader />
             ) : (<Fragment>
@@ -53,6 +56,7 @@ const Home = () => {
                         <p>No products found</p>
                     )}
                 </div>
+                <Footer/>
             </Fragment>
             )}
         </Fragment>

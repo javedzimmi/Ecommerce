@@ -12,14 +12,14 @@ import {
 } from "../constants/ProductConstants";
 
 // Action to get products
-export const getProduct = () => async (dispatch) => {
+export const getProduct = (keyword=" ") => async (dispatch) => {
     try {
         dispatch({
             type: ALL_PRODUCT_REQUEST
         });
 
         // Make the API request
-        const { data } = await axios.get("/products/products");
+        const { data } = await axios.get(`/products/products?keyword=${keyword}`);
 
         // Dispatch success action with the fetched products
         dispatch({

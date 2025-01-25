@@ -1,11 +1,9 @@
+
+
 const User = require("../model/userModel");
 const sendToken = require("../utils/jwToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-
-
-
-
 
 //register user 
 
@@ -23,12 +21,7 @@ exports.registerUser = async (req, res, next) => {
                 url: "profilepicurl", // Placeholder, replace with actual avatar URL
             },
         });
-
         sendToken(user, 200, res);
-
-
-
-
     } catch (error) {
         // Handle errors, like validation or database issues
         console.error('Error creating user:', error);
@@ -37,14 +30,10 @@ exports.registerUser = async (req, res, next) => {
             message: 'Failed to create user.',
             error: error.message,
         });
-
-
     }
-
 };
 
 //login user 
-
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
@@ -52,7 +41,6 @@ exports.login = async (req, res) => {
     if (!email && !password) {
         return res.status(400).json({ message: 'Email or password is required.' });
     }
-
     try {
         // If email is provided, find the user by email
         if (email) {
@@ -64,7 +52,6 @@ exports.login = async (req, res) => {
                     message: 'Invalid email or password.',
                 });
             }
-
             // If password is provided, compare it with the stored hash
             if (password) {
                 const isPasswordMatch = await user.comparePassword(password);
@@ -76,7 +63,6 @@ exports.login = async (req, res) => {
                     });
                 }
             }
-
             // If passwords match or only the email is entered, generate a token
             sendToken(user, 200, res);
         } else {
@@ -427,7 +413,7 @@ exports.deleteUser = async (req, res, next) => {
             });
         }
 
-   
+
         // Send the updated user data in the response
         res.status(200).json({
             success: true,

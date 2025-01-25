@@ -7,9 +7,11 @@ import ReactStars from "react-rating-stars-component";
 import "./Product.css"
 import { useAlert } from "react-alert";
 
-
+    
 import ReviewCard from "./ReviewCard.js"
 import Loader from './layout/loader/Loader.js';
+import Header from './layout/Header/Header.js';
+import Footer from './layout/footer/Footer.js';
 
 function ProductDetails() {
     const dispatch = useDispatch();
@@ -17,7 +19,10 @@ function ProductDetails() {
 
     const { id } = useParams();  // Use the hook to get the 'id' from URL params
     // Safely access state with default value, in case productDetails is undefined
-    const { product, loading, error } = useSelector(state => state.productDetails || {});
+    const { product , loading , error } = useSelector(state => state.productDetails || {});
+
+    console.log(product)
+
 
     useEffect(() => {
         if (alert.error.length > 0) {
@@ -47,6 +52,7 @@ function ProductDetails() {
 
     return (
         <Fragment>
+            <Header />
             {loading ? <Loader /> :
                 (<Fragment>
                     <div className='ProductDetails'>
@@ -112,7 +118,7 @@ function ProductDetails() {
                     </p>)}
                 </Fragment>)}
 
-
+<Footer />
 
 
         </Fragment>

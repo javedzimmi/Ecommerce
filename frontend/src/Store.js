@@ -8,18 +8,11 @@ const reducer = combineReducers({
     products: productsReducer,
     
     productDetails:productDetailsReducer,
-    
-
-
 });
 
 let initialState = {
-
 };
-
 const Middleware = [thunk];
-
-
 const store = createStore(
     reducer, // The combined reducers
     initialState, // The initial state
